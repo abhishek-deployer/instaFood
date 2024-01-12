@@ -1,0 +1,18 @@
+.secondSectionMain{
+    padding: 50px;
+}
+.flexStart{
+    display: flex;
+    gap: 30px;
+}
+.flex-half{
+    flex: 1;
+}
+.fi{
+    height: 500px;
+    border-radius: 20px;
+}
+.fis{
+    height: 200px;
+    border-radius: 20px;
+}
