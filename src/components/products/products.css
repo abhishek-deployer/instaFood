@@ -1,0 +1,15 @@
+.active {
+    /* Your existing styles for .product-list */
+  
+    /* Add hover effect */
+    cursor: pointer;
+    border-bottom: 2px solid green;
+  }
+  .nonActive{
+    cursor: pointer;
+  }
+  .vegetables{
+    cursor: pointer;
+  }
+  
+  
