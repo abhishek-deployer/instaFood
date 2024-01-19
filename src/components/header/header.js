@@ -3,6 +3,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import "./header.css"
 import CartModal from "../cart/cart";
+import { Link } from "react-router-dom";
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
   const [isCartModalVisible, setCartModalVisible] = useState(false);
@@ -44,9 +45,9 @@ const Header = () => {
         {isCartModalVisible && (
           <CartModal handleClose={() => setCartModalVisible(false)} />
         )}
-        <Nav.Link href="#cart">
+        <Link to="/profile">
           <FaUser className="mx-3" />
-        </Nav.Link>
+          </Link>
       </Nav>
     </Navbar>
   );

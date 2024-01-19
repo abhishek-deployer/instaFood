@@ -3,8 +3,15 @@ import "./login.css";
 import { FaAllergies } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+// import jwtDecode from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from 'react-router-dom';
+import { setProfile } from '../redux/slice/profileSlice';
+import { UseDispatch, useDispatch } from 'react-redux';
 const Login = () => {
+  const navigate =useNavigate()
   // State variables for form fields and errors
+  const dispatch=useDispatch()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -37,9 +44,27 @@ const Login = () => {
 
         // Handle response data as needed
         console.log('Server response:', response.data);
+        const token = response.data.token;
+        const decodedToken = jwtDecode(token);
+        console.log("decode token",decodedToken)
+  const { username, name } = decodedToken;
+  
+
+  // Dispatch the action to set the profile in the Redux store
+  dispatch(setProfile({ username, name }));
+
+  // Dispatch the action to set the profile in the Redux store
+  // dispatch(setProfile({ username, name }));
+
+        // Store the token in local storage
+        localStorage.setItem("token", token);
+
+        // Log the token to the console
+        console.log("Local storage token:",localStorage.getItem("token"));
 
         // Display success message to the user (or redirect, etc.)
         alert('Login successful!');
+        navigate("/home")
 
       } catch (error) {
         // Handle error (display error message, etc.)
